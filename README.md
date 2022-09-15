@@ -17,6 +17,7 @@ Um sistema onde entregadores autonomos podem divulgar e prestar seus serviços.
 - Entegador
 - Comentário
 - Meios de pagamento
+- Contato
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
