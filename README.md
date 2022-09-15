@@ -1,25 +1,29 @@
-# :checkered_flag: NOME DO PROJETO
+# :checkered_flag: Deliver.Me
 
-Breve descrição do que o seu projeto faz.
+Um sistema onde entregadores autonomos podem divulgar e prestar seus serviços.
 
 ## :technologist: Membros da equipe
 
-Matrícula, nome e curso dos participantes.
+415199, Francisco Thiago dos Santos Gonçalves. Engenharia de Computação.
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
-Informe aqui os tipos de usuário que irão interagir com a aplicação. Ex: administrador, locador, locatario, usuário não logado.
-
-> Tenha em mente que obrigatoriamente a aplicação deve possuir funcionalidades acessíveis a todos os tipos de usuário e outra funcionalidades restritas a certos tipos de usuários.
-
+- Usuário não logado
+- Usuário logado
+- Administrador
 ## :spiral_calendar: Entidades ou tabelas do sistema
 
-Liste as principais entidades do sistema.
+- Usuário
+- Entegador
+- Comentário
+- Meios de pagamento
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
-Descreve ou liste brevemente as principais funcionalidades da aplicação que será desenvolvida. Destaque a funcionalidades que serão acessévies a todos os usuários e aquelas restriras a usuários logados.
-
+- Usuário não logado pode pesquisar por entregadores e obter informações sobre contato, meios de pagamento, horários de serviço e disponibilidade.
+- Usuário logado possui as mesma funcionalidades do usuário não logado, porém também pode comentar e avaliar o serviço prestado pelo entregador. O usuário logado também pode criar um novo elemento na tabela entregador caso também preste serviços de *Delivery*.
+- O usuário que possua um elemento na tabela entregadores pode editar informações como contato, meios de pagamento, horários de serviçços e disponibilidade.
+- O administrator pode excluir usuários.
 
 ----
 
