@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Deliver.Me</title>
+        <meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </head>
+    <body class="container">
+        <header class="row">
+            <div class="col" id="user-info">
+                <div class="d-flex flex-row justify-content-end">
+                    <div class="p-2"><a id="username" href="home.html">Nome do usuário</a></div>
+                    <div class="p-2">
+                        <img alt="profile-pic" class="d-none d-md-inline" id="profile-pic" src=".">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="row" id="logo">
+                <div class="col">
+                    <div class="d-flex flex-row justify-content-center mt-5">
+                        <span class="p-2 display-1 font-weight-bold color-red text-primary d-none d-md-inline">Deliver.Me</span>
+                        <span class="p-2 display-1 font-weight-bold color-red text-primary d-inline d-md-none">Dl.Me</span>
+                    </div>
+                </div>
+            </section>
+            <section class="row" id="input">
+                <form class="col" id="user-input">
+                    <div class="input-group mt-5">
+                        <input type="text" class="form-control" placeholder="Entregador, Bairro, Cidade" aria-label="search" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group d-flex flex-row justify-content-center mt-5">
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
+                            <button type="button" class="btn btn-primary">Pesquisar</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <section class="row" id="login">
+                <div class="modal fade" id="login-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="login-modal" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content ">
+                        <div class="modal-header text-center ">
+                          <h5 class="modal-title ">Login</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="col" id="user-input">
+                                <h6 class="text-secondary">Email</h6>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Entregador, Bairro, Cidade" aria-label="search" aria-describedby="basic-addon1">
+                                </div>
+                                <h6 class="text-secondary mt-4">Senha</h6>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" aria-label="search" aria-describedby="basic-addon1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="passrecover.html">Esqueci minha senha</a>
+                            <button type="button" class="btn btn-secondary">Signup</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </section>
+        </main>
+    </body>
+</html>
