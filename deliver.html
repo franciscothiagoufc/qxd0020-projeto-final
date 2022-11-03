@@ -42,6 +42,21 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis, tortor sed pellentesque laoreet, risus nulla egestas elit, sit amet ornare purus augue in lacus. Pellentesque congue urna ac congue faucibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis, tortor sed pellentesque laoreet, risus nulla egestas elit, sit amet ornare purus augue in lacus. Pellentesque congue urna ac congue faucibus.
                             </span>
                         </div>
+                        <div class="d-flex flex-row justify-content-around mt-2">
+                            <div>
+                                <span>Avaliação:</span>
+                                <span>5/5</span>
+                            </div>
+                            <div>
+                                <span>Status:</span>
+                                <span>Disponível</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary">
+                                    Contratar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card mt-4" ">
@@ -49,6 +64,22 @@
                         <h6>Informações de Contato</h6>
                     </div>
                     <div class="card-body">
+                        <table class="table table-stripe">
+                            <tbody>
+                                <tr>
+                                    <th>Whatsapp</th>
+                                    <td>+55 (88) 9 987654321</td>
+                                </tr>
+                                <tr>
+                                    <th>Telegram</th>
+                                    <td>+55 (88) 9 987654321</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>email@email.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="card mt-4" ">
@@ -56,6 +87,59 @@
                         <h6>Meios de pagamento</h6>
                     </div>
                     <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#card">Cartão</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#pix">PIX</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="card">
+                                <table class="table table-stripe text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Cartões aceitos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Visa</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MasterCard</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cielo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane container fade" id="pix">
+                                <table class="table table-stripe text-center">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Chaves pix</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Telefone</th>
+                                            <td>111111111111111</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Aletaório</th>
+                                            <td>111111111111111</td>
+                                        </tr>
+                                        <tr>
+                                            <th>CPF</th>
+                                            <td>111111111111111</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -69,6 +153,14 @@
                     </div>
                 </div>
             </aside>
+            <footer class="row">
+                <section class="col">
+                    <div class="d-flex flex-row justify-content-center">
+                        <h6>comentarios</h6>
+                        <ul></ul>
+                    </div>
+                </section>
+            </footer>
         </section>
     </body>
 </html>
