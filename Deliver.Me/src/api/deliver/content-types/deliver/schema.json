@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivers",
+  "info": {
+    "singularName": "deliver",
+    "pluralName": "delivers",
+    "displayName": "Deliver",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "deliver"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "avaliable": {
+      "type": "boolean"
+    },
+    "coments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::coment.coment"
+    },
+    "favorite": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::favorite.favorite",
+      "inversedBy": "deliver"
+    }
+  }
+}
