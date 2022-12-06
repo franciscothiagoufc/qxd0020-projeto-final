@@ -29,12 +29,6 @@
       "relation": "oneToMany",
       "target": "api::coment.coment"
     },
-    "favorite": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::favorite.favorite",
-      "mappedBy": "deliver"
-    },
     "pix_tel": {
       "type": "relation",
       "relation": "oneToOne",
@@ -52,6 +46,9 @@
       "relation": "oneToOne",
       "target": "api::card-debit.card-debit",
       "mappedBy": "deliver"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

@@ -18,7 +18,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::deliver.deliver",
-      "inversedBy": "pix_tel"
+      "mappedBy": "pix_tel"
     }
   }
 }

@@ -73,7 +73,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::deliver.deliver",
-      "inversedBy": "users"
+      "mappedBy": "users"
     },
     "favorites": {
       "type": "relation",

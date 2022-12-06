@@ -21,8 +21,7 @@
     "deliver": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::deliver.deliver",
-      "inversedBy": "favorite"
+      "target": "api::deliver.deliver"
     }
   }
 }
