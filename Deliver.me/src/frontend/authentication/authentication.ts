@@ -9,7 +9,7 @@ export interface User{
 export async function authentication(email:string, password:string) {
     async function auth():Promise<any> {
         try{
-            const res = await api.post('/auth/local/',
+            const res = await api.post('/users/',
             {
                 identifier:email,
                 password:password,
@@ -50,6 +50,5 @@ export async function authentication(email:string, password:string) {
         user=value.user
         message=value.message
     })
-    
     return {user,message}
 }
