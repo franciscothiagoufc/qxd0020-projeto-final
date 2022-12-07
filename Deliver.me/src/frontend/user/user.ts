@@ -1,6 +1,2 @@
-export interface User{
-    id:string;
-    name:string;   
-    email:string;
-    token:string 
-}
+import { useSSRContext } from 'vue'
+import {User,authentication} from '../authentication/authentication'

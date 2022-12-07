@@ -1,11 +1,9 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import {authentication} from './frontend/authentication/authentication'
-import { User } from './frontend/user/user'
+import { authentication } from './frontend/authentication/authentication'
 
-let user=authentication('user1@gmail.com','useruser')
-
-console.log(user)
+let auth= await authentication('user1@gmail.com','useruser')
+console.log(auth)
 
 createApp(App).mount('#app')
