@@ -18,9 +18,36 @@ export async function signup(user:User,password:string){
             user.token = data.user.jwt
             let message = "Created"
             return {user, message}
+            return {user, message}
         }catch(e: any){
             let message = e.message
             console.log('Creating failed '+e.message)
+            return {user, message}
+        }
+    }
+    let message = ""
+    await auth().then((value) => {
+        user=value.user
+        message=value.message
+    })
+    return {user,message}
+}
+
+export async function deleteUser(user:User){
+    console.log("Deleting user "+user.id)
+    async function auth():Promise<any> {
+        try{
+            const res = await api.delete(`/users/${user.id}/`,
+            {
+                headers:{
+                    Authentication:`Bearer ${user.token}`
+                }
+            }).then()
+            let message = "Deleted"
+            return {user, message}
+        }catch(e: any){
+            let message = e.message
+            console.log('Deletion failed '+e.message)
             return {user, message}
         }
     }

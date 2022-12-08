@@ -8,8 +8,9 @@ export interface User{
 }
 export async function authentication(email:string, password:string) {
     async function auth():Promise<any> {
+        console.log("Authenticating "+email)
         try{
-            const res = await api.post('/users/',
+            const res = await api.post('/auth/local/',
             {
                 identifier:email,
                 password:password,

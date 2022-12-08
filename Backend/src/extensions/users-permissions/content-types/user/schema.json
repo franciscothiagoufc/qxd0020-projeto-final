@@ -69,17 +69,17 @@
       "target": "api::coment.coment",
       "mappedBy": "user"
     },
-    "deliver": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::deliver.deliver",
-      "mappedBy": "users"
-    },
     "favorites": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::favorite.favorite",
       "mappedBy": "user"
+    },
+    "deliver": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::deliver.deliver",
+      "inversedBy": "user"
     }
   }
 }

@@ -2,15 +2,11 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 import { authentication,User } from './frontend/authentication/authentication'
-import { signup } from './frontend/user/user'
+import { deleteUser, signup } from './frontend/user/user'
+import { searchDeliver } from './frontend/search/search'
 
-let user:User={
-    name:"User3",
-    email:"user3@gmail.com",
-    token:"",
-    id:""
-}
-let auth= await signup(user,'useruser')
-console.log(auth)
+
+let delivers = await searchDeliver('Francisco')
+console.log(delivers)
 
 createApp(App).mount('#app')
