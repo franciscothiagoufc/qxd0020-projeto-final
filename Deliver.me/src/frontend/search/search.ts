@@ -13,18 +13,7 @@ export async function searchDeliver(query:String) {
             const { data } = res
             let delivers:Deliver[]=[];
             data.data.forEach(element => {
-                let deliver:Deliver = {
-                    id:element.id,
-                    user:{} as User,
-                    rating:element.rating,
-                    telpix:{} as Pix,
-                    randompix:{} as Pix,
-                    emailpix:{} as Pix,
-                    credit:{} as Card,
-                    debit:{} as Card,
-                    description:element.description
-                }
-                delivers.push(deliver)
+                delivers.push(element)
             });
             let message = "found"
             return {delivers, message}
