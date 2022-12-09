@@ -6,10 +6,13 @@ import { deleteUser, signup } from './frontend/user/user'
 import { searchDeliver } from './frontend/search/search'
 import { createDeliver, getDeliver } from './frontend/deliver/deliver'
 
+let res = await authentication("fcothiago@gmail.com","123456")
 
-let {delivers,message} = await searchDeliver("Francisco")
-const params = new URLSearchParams(window.location.pathname);
-params.set("query","Francisco")
+let user = res.user
+
+let res2 = await createDeliver(user,"A runble deliver")
+
+let deliver = res2.deliver
 
 
 createApp(App).mount('#app')

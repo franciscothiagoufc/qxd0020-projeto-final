@@ -32,7 +32,7 @@ export async function createDeliver(user:User,description:String) {
                     rating:0,
                     description: description,
                     avaliable: false,
-                    user:user
+                    user:user.id
                 },
             },
             {
@@ -41,8 +41,19 @@ export async function createDeliver(user:User,description:String) {
                     Authorization:`Bearer ${user.token}`,
                 },
             })
-            /*Todo -- Atualizar relação*/
             deliver = res.data.data
+            console.log(deliver.id)
+            /*Todo -- Remover esse CRUD*/
+            /*await api.put(`/users/${user.id}`,
+            {    
+                deliver:deliver.id
+            },
+            {
+                headers:
+                {
+                    Authorization:`Bearer ${user.token}`,
+                },
+            })*/
             return {deliver,message}
         }catch(e: any){
             let deliver:Deliver = {} as Deliver
