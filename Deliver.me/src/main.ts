@@ -8,7 +8,8 @@ import { createDeliver, getDeliver } from './frontend/deliver/deliver'
 
 
 let {delivers,message} = await searchDeliver("Francisco")
+const params = new URLSearchParams(window.location.pathname);
+params.set("query","Francisco")
 
-console.log(delivers)
 
 createApp(App).mount('#app')
