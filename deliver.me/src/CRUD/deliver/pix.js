@@ -2,10 +2,10 @@ import { User } from "../authentication/authentication"
 import {api} from '../base'
 import { Pix, Deliver } from "./deliver"
 
-export async function createPixTel(user:User,deliver:Deliver,key:String)
+export async function createPixTel(user,deliver,key)
 {
     console.log(`Usário ${user.id} criando uma chave pix (telefone) para o entregador ${deliver.id}`)
-    async function auth():Promise<any> 
+    async function auth()
     {
         try
         {
@@ -29,25 +29,25 @@ export async function createPixTel(user:User,deliver:Deliver,key:String)
             console.log(`Pix ${pix.id} criado`)
             return {pix,message}
         }
-        catch(e: any)
+        catch(e)
         {
-            let pix:Pix = {} as Pix
+            let pix = {}
             let message = e.message
             console.log('Creating failed '+e.message)
             return {pix, message}
         }
     }
-    let res: any
+    let res
     await auth().then((value) => {
         res = value
     })
     return res
 }
 
-export async function createPixEmail(user:User,deliver:Deliver,key:String) 
+export async function createPixEmail(user,deliver,key) 
 {
     console.log(`Usário ${user.id} criando uma chave pix (email) para o entregador ${deliver.id}`)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             /*Criando novo usuário*/
             const res = await api.post(`/pix-emails/`,
@@ -68,24 +68,24 @@ export async function createPixEmail(user:User,deliver:Deliver,key:String)
             let pix = res.data
             console.log(`Pix ${pix.id} criado`)
             return {pix,message}
-        }catch(e: any){
-            let pix:Pix = {} as Pix
+        }catch(e){
+            let pix = {} 
             let message = e.message
             console.log('Creating failed '+e.message)
             return {pix, message}
         }
     }
-    let res: any
+    let res
     await auth().then((value) => {
         res = value
     })
     return res
 }
 
-export async function createPixRandom(user:User,deliver:Deliver,key:String) 
+export async function createPixRandom(user,deliver,key) 
 {
     console.log(`Usário ${user.id} criando uma chave pix (aleatoria) para o entregador ${deliver.id}`)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             /*Criando novo usuário*/
             const res = await api.post(`/pix-randoms/`,
@@ -106,24 +106,24 @@ export async function createPixRandom(user:User,deliver:Deliver,key:String)
             let pix = res.data.data
             console.log(`Pix ${pix.id} criado`)
             return {pix,message}
-        }catch(e: any){
-            let pix:Pix = {} as Pix
+        }catch(e){
+            let pix = {}
             let message = e.message
             console.log('Creating failed '+e.message)
             return {pix, message}
         }
     }
-    let res: any
+    let res
     await auth().then((value) => {
         res = value
     })
     return res
 }
 
-export async function updatePixTel(user:User,pix:Pix,key:String)
+export async function updatePixTel(user,pix,key)
 {
     console.log(`Usário ${user.id} editando uma chave pix (telefone) para o entregador ${pix.id}`)
-    async function auth():Promise<any> 
+    async function auth()
     {
         try
         {
@@ -146,15 +146,15 @@ export async function updatePixTel(user:User,pix:Pix,key:String)
             console.log(`Pix ${pix.id} editado`)
             return {pix,message}
         }
-        catch(e: any)
+        catch(e)
         {
-            let pix:Pix = {} as Pix
+            let pix = {}
             let message = e.message
             console.log('Creating failed '+e.message)
             return {pix, message}
         }
     }
-    let res: any
+    let res
     await auth().then((value) => {
         res = value
     })
@@ -164,7 +164,7 @@ export async function updatePixTel(user:User,pix:Pix,key:String)
 export async function updatePixEmail(user:User,pix:Pix,key:String) 
 {
     console.log(`Usário ${user.id} criando uma chave pix (email) para o entregador ${pix.id}`)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             /*Criando novo usuário*/
             const res = await api.put(`/pix-emails/${pix.id}`,
@@ -184,24 +184,24 @@ export async function updatePixEmail(user:User,pix:Pix,key:String)
             pix = res.data
             console.log(`Pix ${pix.id} editado`)
             return {pix,message}
-        }catch(e: any){
-            let pix:Pix = {} as Pix
+        }catch(e){
+            let pix = {} 
             let message = e.message
             console.log('Creating failed '+e.message)
             return {pix, message}
         }
     }
-    let res: any
+    let res
     await auth().then((value) => {
         res = value
     })
     return res
 }
 
-export async function updatePixRandom(user:User,pix:Pix,key:String) 
+export async function updatePixRandom(user,pix:Pix,key) 
 {
     console.log(`Usário ${user.id} editando uma chave pix (aleatoria) ${pix.id}`)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             /*Criando novo usuário*/
             const res = await api.put(`/pix-randoms/${pix.id}`,
@@ -221,14 +221,14 @@ export async function updatePixRandom(user:User,pix:Pix,key:String)
             pix = res.data.data
             console.log(`Pix ${pix.id} editado`)
             return {pix,message}
-        }catch(e: any){
-            let pix:Pix = {} as Pix
+        }catch(e){
+            let pix = {}
             let message = e.message
             console.log('Creating failed '+e.message)
             return {pix, message}
         }
     }
-    let res: any
+    let res
     await auth().then((value) => {
         res = value
     })

@@ -13,7 +13,8 @@ export default createStore({
     async updateUser(state,input){
       console.log(input.pass)
       let res = await authentication(input.email,input.pass)
-      state.user = res.user.username
+      if(res.message == "authenticated")
+        state.user = res.user.username
     },
     changeBtn(state,valorBtn){
       if(valorBtn=='No'){

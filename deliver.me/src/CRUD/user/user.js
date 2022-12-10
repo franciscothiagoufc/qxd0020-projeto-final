@@ -1,9 +1,9 @@
 import {authentication, User} from '../authentication/authentication'
 import {api} from '../base'
 
-export async function signup(user:User,password:string){
+export async function signup(user,password){
     console.log("Creating new user "+user.email)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             const res = await api.post('/users/',
             {
@@ -19,7 +19,7 @@ export async function signup(user:User,password:string){
             let message = "Created"
             return {user, message}
             return {user, message}
-        }catch(e: any){
+        }catch(e){
             let message = e.message
             console.log('Creating failed '+e.message)
             return {user, message}
@@ -33,9 +33,9 @@ export async function signup(user:User,password:string){
     return {user,message}
 }
 
-export async function updateUser(user:User){
+export async function updateUser(user){
     console.log(`Atualizando usuário ${user.id}`)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             const res = await api.put(`/users/${user.id}`,
             {
@@ -52,7 +52,8 @@ export async function updateUser(user:User){
             let message = "Edited"
             return {user, message}
             return {user, message}
-        }catch(e: any){
+        }catch(e){
+            let user = {}
             let message = e.message
             console.log('Creating failed '+e.message)
             return {user, message}
@@ -66,9 +67,9 @@ export async function updateUser(user:User){
     return {user,message}
 }
 
-export async function deleteUser(user:User){
+export async function deleteUser(user){
     console.log("Deleting user "+user.id)
-    async function auth():Promise<any> {
+    async function auth(){
         try{
             const res = await api.delete(`/users/${user.id}/`,
             {
@@ -78,7 +79,8 @@ export async function deleteUser(user:User){
             }).then()
             let message = "Deleted"
             return {user, message}
-        }catch(e: any){
+        }catch(e){
+            let user = {}
             let message = e.message
             console.log('Deletion failed '+e.message)
             return {user, message}
