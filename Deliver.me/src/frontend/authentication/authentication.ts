@@ -16,36 +16,19 @@ export async function authentication(email:string, password:string) {
                 password:password,
             })
             const { data } = res
-            let user:User = 
-            {
-                id : data.user.id,
-                email : email,
-                token: data.jwt,
-                name: data.user.username
-            }
+            let user:User = data.user
+            user.token = res.data.jwt
             console.log("user id "+user.id + " authenticated")
             let message = "authenticated"
             return {user, message}
         }catch(e: any){
-            let user:User = 
-            {
-                id : "",
-                email : email,
-                token: "",
-                name: ""
-            }
+            let user:User = {} as User
             let message = e.message
             console.log('authenticated failed '+e.message)
             return {user, message}
         }
     }
-    let user:User = 
-    {
-                id: "",
-                email:"",
-                token:"",
-                name:""
-    }
+    let user:User = {} as User
     let message = ""
     await auth().then((value) => {
         user=value.user
