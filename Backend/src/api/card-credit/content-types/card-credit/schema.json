@@ -26,6 +26,9 @@
       "relation": "oneToOne",
       "target": "api::card-credit.card-credit",
       "inversedBy": "deliver"
+    },
+    "number": {
+      "type": "string"
     }
   }
 }

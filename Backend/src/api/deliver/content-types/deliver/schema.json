@@ -18,11 +18,6 @@
     "avaliable": {
       "type": "boolean"
     },
-    "coments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::coment.coment"
-    },
     "pix_tel": {
       "type": "relation",
       "relation": "oneToOne",
@@ -49,6 +44,18 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "deliver"
+    },
+    "pix_random": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pix-random.pix-random",
+      "mappedBy": "deliver"
+    },
+    "coments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::coment.coment",
+      "mappedBy": "deliver"
     }
   }
 }

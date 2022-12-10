@@ -10,7 +10,7 @@ export async function authentication(email:string, password:string) {
     async function auth():Promise<any> {
         console.log("Authenticating "+email)
         try{
-            const res = await api.post('/auth/local/',
+            const res = await api.get('/auth/local/',
             {
                 identifier:email,
                 password:password,

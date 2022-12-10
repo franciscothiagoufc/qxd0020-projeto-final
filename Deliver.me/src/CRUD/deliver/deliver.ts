@@ -6,7 +6,7 @@ export interface Pix{
 }
 export interface Card{
     id:Number
-    enterprise:string
+    company:string
     number:string
 }
 export interface Deliver{
@@ -96,7 +96,7 @@ export async function getUserDeliver(user:User) {
                 id:res.data.data[0].id,
                 rating:res.data.data[0].attributes.rating,
                 pix_tel:res.data.data[0].attributes.pix_tel.data,
-                pix_rand:res.data.data[0].attributes.pix_random.data,
+                pix_rand:res.data.data[0].pix_rand,
                 pix_email:res.data.data[0].attributes.pix_email.data,
                 credit:{} as Card,
                 available:res.data.data[0].attributes.available,

@@ -20,6 +20,9 @@
       "relation": "oneToOne",
       "target": "api::deliver.deliver",
       "inversedBy": "card_debit"
+    },
+    "number": {
+      "type": "string"
     }
   }
 }

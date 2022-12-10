@@ -16,8 +16,8 @@
     "username": {
       "type": "string",
       "minLength": 3,
-      "unique": true,
-      "configurable": false,
+      "unique": false,
+      "configurable": true,
       "required": true
     },
     "email": {
@@ -79,7 +79,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::deliver.deliver",
-      "inversedBy": "user"
+      "mappedBy": "user"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pix-random",
     "pluralName": "pix-randoms",
-    "displayName": "Pix-random"
+    "displayName": "Pix-random",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,12 +14,6 @@
   "attributes": {
     "random": {
       "type": "string"
-    },
-    "deliver": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::coment.coment",
-      "inversedBy": "pix_random"
     }
   }
 }

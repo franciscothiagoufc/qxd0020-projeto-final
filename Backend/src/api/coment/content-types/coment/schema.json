@@ -4,7 +4,8 @@
   "info": {
     "singularName": "coment",
     "pluralName": "coments",
-    "displayName": "Coment"
+    "displayName": "Coment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,11 +24,11 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "coments"
     },
-    "pix_random": {
+    "deliver": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::pix-random.pix-random",
-      "inversedBy": "deliver"
+      "relation": "manyToOne",
+      "target": "api::deliver.deliver",
+      "inversedBy": "coments"
     }
   }
 }
