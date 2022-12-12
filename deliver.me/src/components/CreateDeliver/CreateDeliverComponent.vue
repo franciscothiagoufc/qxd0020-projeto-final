@@ -16,7 +16,10 @@ import router from '@/router';
                 {
                     router.push("/")
                 }
-            }
+            }, 
+            jump: function(){
+                router.push('/')
+            }   
         }
     }
 </script>
@@ -38,7 +41,7 @@ import router from '@/router';
                     </div>
                     <div class="card-footer text-left d-flex flex-row justify-content-around">
                             <button @click="this.createDeliver()" class="btn-primary w-25">Afiliar</button>
-                            <button class="btn-secondary w-25" @click="router.push('/')"> Pular</button>
+                            <button class="btn-secondary w-25" @click="this.jump()"> Pular</button>
                     </div>
                 </div>
             </section>
