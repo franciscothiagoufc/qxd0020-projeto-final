@@ -1,3 +1,18 @@
+<script>
+import router from '@/router';
+export default{
+    data(){
+        return{
+            query:""
+        }
+    },
+    methods:{
+        search: function(){
+            router.push('/search/'+this.query)
+        }
+    }
+}
+</script>
 <template>
     <header class="row">
         <div class="col">
@@ -5,8 +20,8 @@
                 <RouterLink to="/" class="link p-2 font-weight-bold color-red text-primary d-none d-md-inline">Deliver.Me</RouterLink>
                 <span class="p-2 font-weight-bold color-red text-primary d-inline d-md-none">Dl.Me</span>
                 <div class="input-group w-75">
-                    <input type="text" class="form-control" aria-label="search" aria-describedby="basic-addon1">
-                    <button type="button" class="btn btn-primary">Pesquisar</button>
+                    <input type="text" v-model="query" class="form-control" aria-label="search" aria-describedby="basic-addon1">
+                    <button @click="this.search()" type="button" class="btn btn-primary">Pesquisar</button>
                 </div>
                 <img alt="Profile" src="">
             </div>

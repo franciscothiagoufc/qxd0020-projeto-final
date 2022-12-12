@@ -4,7 +4,7 @@ import { createOrder } from '@/CRUD/order/order';
 export default{
     data(){
         return {
-            delivers:{}
+            delivers:{},
         }
     },
     props:{
@@ -51,7 +51,7 @@ export default{
                                 <span>Disponível</span>
                             </div>-->
                             <div>
-                                <button class="btn btn-primary" @click="this.order(deliv.id)">
+                                <button v-if="this.$store.state.user.token != ''" class="btn btn-primary" @click="this.order(deliv.id)">
                                     Contratar
                                 </button>
                             </div>

@@ -1,4 +1,5 @@
 <script>
+import { deleteDeliver, getUserDeliver } from '@/CRUD/deliver/deliver';
 import { getAllUsers } from '@/CRUD/user/user';
 import { deleteUser } from '@/CRUD/user/user';
 export default{
@@ -17,7 +18,12 @@ export default{
                 id:id,
                 token:this.$store.state.user.token
             }
-            let res = await deleteUser(user)
+            let res = await getUserDeliver(user)
+            if(res.message == "found")
+            {
+                await deleteDeliver(res.deliver)
+            }
+            res = await deleteUser(user)
             if(res.message == "Deleted")
             {
                 console.log("Deletado")

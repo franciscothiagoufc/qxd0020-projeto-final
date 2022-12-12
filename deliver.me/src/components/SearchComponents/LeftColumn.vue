@@ -1,10 +1,10 @@
 <template>
     <nav class="d-none d-lg-block col-md-2">
                 <ul>
-                    <li><a href=".">Home</a></li>
-                    <li><a href=".">Profile</a></li>
-                    <li><a href=".">Settings</a></li>
-                    <li><a href=".">Filtrar</a></li>
+                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/deliver">Profile</router-link></li>
+                    <li><router-link to="/admin">Settings</router-link></li>
+                    <li><router-link to="/">Filtrar</router-link></li>
                 </ul>
             </nav>
 </template>

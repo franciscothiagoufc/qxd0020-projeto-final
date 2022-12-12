@@ -12,6 +12,7 @@ import router from '@/router';
                 console.log(this.$store.state.user)
 
                 let res = await createDeliver(this.$store.state.user,this.description)
+                this.$store.state.deliver.id = res.deliver.id
                 if(res.message == "Created")
                 {
                     router.push("/")
