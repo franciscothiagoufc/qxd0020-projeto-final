@@ -26,7 +26,7 @@ export default{
                         <img src="" alt="profile-pic">
                     </div>
                     <div class="w-100 form-group">
-                        <textarea class="w-100" contenteditable="true" v-model="this.deliver.description">
+                        <textarea class="w-100" contenteditable="true" v-model="this.$store.state.deliver.description">
                         </textarea>
                     </div>
                     <div class="d-flex flex-row justify-content-around mt-2">

@@ -33,36 +33,31 @@ export async function signup(user,password){
     return {user,message}
 }
 
-export async function updateUser(user){
-    console.log(`Atualizando usuário ${user.id}`)
+export async function updateUser(id,name,email,token){
     async function auth(){
         try{
-            const res = await api.put(`/users/${user.id}`,
+            await api.put(`/users/${id}`,
             {
-                username:user.name,
+                username:name,
+                email:email
             },{
                 headers:{
-                    Authorization:`Bearer ${user.token}`
+                    Authorization:`Bearer ${token}`
                 }
             })
-            const { data } = res
-            console.log(`user ${user.id} editado`)
-            user.id = data.user.id
-            user.token = data.user.jwt
             let message = "Edited"
-            return {user, message}
+            return {message}
         }catch(e){
             let message = e.message
             console.log('Creating failed '+e.message)
-            return {user, message}
+            return {message}
         }
     }
     let message = ""
     await auth().then((value) => {
-        user=value.user
         message=value.message
     })
-    return {user,message}
+    return {message}
 }
 
 export async function deleteUser(user){
@@ -121,7 +116,7 @@ export async function getUserRole(user){
 export async function getAllUsers(user){
     async function auth(){
         try{
-            let res = await api.get(`/users/`,)
+            let res = await api.get(`/users/?populate=*`,)
             let users = res.data
             let message = "Found"
             return {users, message}

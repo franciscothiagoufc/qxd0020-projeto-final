@@ -98,25 +98,24 @@ export async function getUserDeliver(user) {
     return res
 }
 
-export async function updateDeliver(user,deliver) {
-    console.log(`User ${user.id} is updating a deliver`)
+export async function updateDeliver(deliver,rating,description,token) {
+    console.log(description)
+
     async function auth(){
         try{
             /*Criando novo usuário*/
-            const res = await api.put(`/delivers/${deliver.id}`,
+            const res = await api.put(`/delivers/${deliver}`,
             {    
                 data:
                 {
-                    rating:deliver.rating,
-                    description: deliver.description,
-                    avaliable: deliver.available,
-                    user:user.id
+                    description:description,
+                    rating:rating
                 },
             },
             {
                 headers:
                 {
-                    Authorization:`Bearer ${user.token}`,
+                    Authorization:`Bearer ${token}`,
                 },
             })
             deliver = res.data.data

@@ -14,7 +14,9 @@ export default createStore({
       role:''
     },
     deliver:{
-      id:-1
+      id:-1,
+      description:"",
+      rating:0
     },
     btnCheckValue:true
   },
@@ -38,6 +40,9 @@ export default createStore({
         if(res.message == "found")
         {
             state.deliver.id = res.deliver.id
+            state.deliver.description = res.deliver.description
+            state.deliver.rating = res.deliver.rating
+
             router.push('/deliver/');
         }
         if(state.user.role == "Admin")
@@ -68,6 +73,9 @@ export default createStore({
       state.user.email = "" 
       state.user.token = ""
       state.deliver.id = -1
+      state.deliver.description = ""
+      state.deliver.rating = 0
+
     },
     changeBtn(state,valorBtn){
       if(valorBtn=='No'){
