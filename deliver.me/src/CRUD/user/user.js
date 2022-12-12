@@ -1,4 +1,3 @@
-import {authentication, User} from '../authentication/authentication'
 import {api} from '../base'
 
 export async function signup(user,password){
@@ -13,11 +12,12 @@ export async function signup(user,password){
                 confirmed:true
             })
             const { data } = res
-            console.log("user id "+data.user.id + " authenticated")
-            user.id = data.user.id
-            user.token = data.user.jwt
+            console.log("user id "+data.id + " authenticated")
+
+            user.id = data.id
+            user.token = data.jwt
+            console.log(res)
             let message = "Created"
-            return {user, message}
             return {user, message}
         }catch(e){
             let message = e.message
@@ -51,9 +51,7 @@ export async function updateUser(user){
             user.token = data.user.jwt
             let message = "Edited"
             return {user, message}
-            return {user, message}
         }catch(e){
-            let user = {}
             let message = e.message
             console.log('Creating failed '+e.message)
             return {user, message}
@@ -71,16 +69,15 @@ export async function deleteUser(user){
     console.log("Deleting user "+user.id)
     async function auth(){
         try{
-            const res = await api.delete(`/users/${user.id}/`,
+            await api.delete(`/users/${user.id}/`,
             {
                 headers:{
                     Authorization:`Bearer ${user.token}`
                 }
-            }).then()
+            })
             let message = "Deleted"
             return {user, message}
         }catch(e){
-            let user = {}
             let message = e.message
             console.log('Deletion failed '+e.message)
             return {user, message}
@@ -92,4 +89,53 @@ export async function deleteUser(user){
         message=value.message
     })
     return {user,message}
+}
+
+export async function getUserRole(user){
+    async function auth(){
+        try{
+            let res = await api.get(`/users/me?populate=role`,
+            {
+                headers:{
+                    Authorization:`Bearer ${user.token}`
+                }
+            })
+            let role = res.data.role.name
+            let message = "Found"
+            return {role, message}
+        }catch(e){
+            let message = e.message
+            console.log('Creating failed '+e.message)
+            return {user, message}
+        }
+    }
+    let message = ""
+    let role
+    await auth().then((value) => {
+        role=value.role
+        message=value.message
+    })
+    return {role,message}
+}
+
+export async function getAllUsers(user){
+    async function auth(){
+        try{
+            let res = await api.get(`/users/`,)
+            let users = res.data
+            let message = "Found"
+            return {users, message}
+        }catch(e){
+            let message = e.message
+            console.log('Creating failed '+e.message)
+            return {user, message}
+        }
+    }
+    let message = ""
+    let users
+    await auth().then((value) => {
+        users=value.users
+        message=value.message
+    })
+    return {users,message}
 }

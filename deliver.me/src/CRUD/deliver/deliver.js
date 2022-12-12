@@ -77,6 +77,7 @@ export async function getUserDeliver(user) {
                 pix_tel:res.data.data[0].attributes.pix_tel.data,
                 pix_rand:res.data.data[0].pix_rand,
                 pix_email:res.data.data[0].attributes.pix_email.data,
+                user:res.data.data[0].attributes.user,
                 credit:{},
                 available:res.data.data[0].attributes.available,
                 debit:res.data.data[0].attributes.pix_debit,
@@ -140,7 +141,7 @@ export async function deleteDeliver(user,deliver){
     console.log(`User ${user.id} deletando entregador`)
     async function auth(){
         try{
-            const res = await api.delete(`/delivers/${deliver.id}`,
+            await api.delete(`/delivers/${deliver.id}`,
             {   
                 headers:{
                     Authorization:`Bearer ${user.token}`
@@ -155,12 +156,11 @@ export async function deleteDeliver(user,deliver){
             return {user, message}
         }
     }
-    let message = ""
+    let res
     await auth().then((value) => {
-        user=value.user
-        message=value.message
+        res = value
     })
-    return {user,message}
+    return res
 }
 
 

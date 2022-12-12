@@ -1,11 +1,12 @@
 import {api} from '../base'
-import { User } from "../authentication/authentication"
-import { Deliver, Pix,Card } from '../deliver/deliver'
 //https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#filtering
 export async function searchDeliver(query) {
+    console.log("search")
+
     async function search(){
         try{
-            const res = await api.get(`/delivers/?filters[user][username][$contains]=${query}`,{
+
+            const res = await api.get(`/delivers/?filters[user][username][$contains]=${query}&populate=*`,{
                 params:{
                     fields:["id","rating","description"]
                 }

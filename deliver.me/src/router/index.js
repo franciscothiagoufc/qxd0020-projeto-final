@@ -14,8 +14,30 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import('@/views/CreateAccountScreen.vue')
+  },
+  {
+    path: '/search/:query',
+    name: 'searchPage',
+    component: () => import('@/views/SearchScreen.vue'),
+    props: route => ({ query: route.query.q })
+  },
+  {
+    path: '/admin/',
+    name: 'dminPage',
+    component: () => import('@/views/AdminPage.vue')
+  },
+  {
+    path: '/deliver/',
+    name: 'DeliverScreen',
+    component: () => import('@/views/DeliverScreen.vue')
+  },
+  {
+    path: '/afiliate/',
+    name: 'AfiliateScreen',
+    component: () => import('@/views/CreateDeliver.vue')
   }
 ]
+
 
 const router = createRouter({
   history: createWebHashHistory(),

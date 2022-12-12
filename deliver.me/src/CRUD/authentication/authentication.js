@@ -11,7 +11,9 @@ export async function authentication(email, password) {
             })
             const { data } = res
             let user = data.user
-            user.token = res.data.jwt
+            user.token = data.jwt
+            user.role = data.user.role
+            console.log(data)
             console.log("user id "+user.id + " authenticated")
             let message = "authenticated"
             return {user, message}

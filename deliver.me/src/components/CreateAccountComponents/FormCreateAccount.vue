@@ -7,16 +7,15 @@
                         <h6 class="p-2 font-weight-bold color-red text-primary">Deliver.Me</h6>
                     </div>
                     <div class="card-body text-left">
-                        <form class="col" id="user-input" @submit="goToRoute">
+                        <form class="col" id="user_input" action="" @submit.prevent="createUser">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" placeholder="Name" required>
+                                <input type="text" class="form-control" placeholder="Name" v-model="name" required>
                                 <label>Name</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="Email" class="form-control" placeholder="Name" required>
+                                <input type="Email" class="form-control" placeholder="Name" v-model="email" required>
                                 <label>Email</label>
                             </div>
-
                             <PassaAndConfirm />
                             <h6 class="text-secondary mt-4">Data de nascimento</h6>
                             <div class="input-group">
@@ -36,10 +35,10 @@
                                 <RadioCheck />
                             </div>
                             <div class="d-flex flex-row justify-content-center">
-                                <RouterLink to="/">
+                                <!----<RouterLink to="/">-->
                                 <input type="submit" class="btn btn-primary w-50 mt-4" value="Create account"
                                     :disabled="this.$store.state.btnCheckValue">
-                                </RouterLink>
+                                <!----</RouterLink>-->
                             </div>
                         </form>
                     </div>
@@ -47,19 +46,42 @@
             </section>
         </main>
     </div>
-
 </template>
 <script>
+import router from '@/router';
+import { signup } from '@/CRUD/user/user';
 import RadioCheck from './RadioCheck.vue';
 import PassaAndConfirm from './PassaAndConfirm.vue';
+import { authentication } from '@/CRUD/authentication/authentication';
+
 export default {
+    data(){
+        return {
+            name:"",
+            email:""
+        }
+    },
     components: {
         RadioCheck,
         PassaAndConfirm
     },
-    methods: {
-        goToRoute() {
-
+    methods:{
+        async createUser() {
+            let user = {
+                name : this.name,
+                email : this.email
+            }
+            console.log(this.$store.state.user.pass)
+            let res = await signup(user,this.$store.state.user.pass)
+            if(res.message == "Created")
+            {
+                let res = await authentication(user.email,this.$store.state.user.pass)
+                this.$store.state.user.name = res.user.username
+                this.$store.state.user.email = res.user.email
+                this.$store.state.user.token = res.user.token
+                this.$store.state.user.id = res.user.id
+                router.replace({ path: '/afiliate' })
+            }
         }
     }
 }

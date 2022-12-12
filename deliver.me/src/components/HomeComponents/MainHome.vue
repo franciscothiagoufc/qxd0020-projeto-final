@@ -1,8 +1,20 @@
 <script>
     export default {
+        data(){
+            return{
+                account:{
+                    email:'',
+                    pass:''
+                },
+                query:""
+            }
+        },
         methods:{
-            f(){
-                this.$store.commit("updateUser",{email:"fcothiago@gmail.com",pass:"123456"})
+            login(){
+                this.$store.commit("updateUser",this.account)
+            },
+            logout(){
+                this.$store.commit("logout")
             }
         }
     }
@@ -21,14 +33,15 @@
         <section class="row" id="input">
             <form class="col" id="user-input">
                 <div class="input-group mt-5">
-                    <input type="text" class="form-control" placeholder="Entregador, Bairro, Cidade" aria-label="search"
+                    <input type="text" class="form-control" placeholder="Entregador, Bairro, Cidade" v-model="this.query" aria-label="search"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group d-flex flex-row justify-content-center mt-5">
                     <div class="containerButtons">
-                        <button type="button" class="btnOutModal btn btn-secondary" data-bs-toggle="modal"
+                        <button v-if="this.$store.state.user.token == ''" type="button" class="btnOutModal btn btn-secondary" data-bs-toggle="modal"
                             data-bs-target="#login-modal">Login</button>
-                        <button type="button" @click="f" class="btnOutModal btn btn-primary">Pesquisar</button>
+                        <button v-else  class="btnOutModal btn btn-secondary" @click="this.logout()">Logout</button>
+                        <button @click="$router.push('/search/'+this.query)" type="button"  class="btnOutModal btn btn-primary">Pesquisar</button>
                     </div>
                 </div>
             </form>
@@ -47,12 +60,12 @@
                                 <h6 class="text-secondary">Email</h6>
                                 <div class="input-group">
                                     <input type="e-mail" class="form-control" placeholder="Digite seu e-mail"
-                                        aria-label="search" aria-describedby="basic-addon1" required>
+                                        aria-label="search" aria-describedby="basic-addon1" v-model="account.email"  required>
                                 </div>
                                 <h6 class="text-secondary mt-4">Senha</h6>
                                 <div class="input-group">
                                     <input type="password" class="form-control" aria-label="search"
-                                        placeholder="Digite sua senha" aria-describedby="basic-addon1" minlength="3"
+                                        placeholder="Digite sua senha" aria-describedby="basic-addon1" v-model="account.pass" minlength="3"
                                         required>
                                 </div>
                                 <div class="modal-footer">
@@ -61,10 +74,10 @@
                                     </div>
                                     <div class="modalButtons">
                                         <router-link to="/createAccount" data-bs-dismiss="modal">
-                                            <button type="button" class=" btn btn-secondary">Signup</button>
+                                            <button type="button" class="btn btn-secondary">Signup</button>
                                         </router-link>
-                                        <input type="submit" class=" btn btn-primary" value="Login">
-                                    </div>
+                                        <input type="button" class="btn btn-primary" value="Login" data-bs-dismiss="modal" @click="login"> 
+                                     </div>
                                 </div>
                             </form>
                         </div>

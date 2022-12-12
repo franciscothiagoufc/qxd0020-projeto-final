@@ -1,6 +1,6 @@
 <template>
     <div class="form-floating mb-3">
-        <input type="password" class="pass form-control" id="password" placeholder="password" v-model="inputPassword"
+        <input type="password" class="pass form-control" id="password" placeholder="password" v-model="this.$store.state.user.pass"
             minlength="6" required ref="inputPass">
         <label for="password">Password</label>
     </div>
