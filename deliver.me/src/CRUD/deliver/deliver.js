@@ -1,6 +1,6 @@
 import {api} from '../base'
 
-export async function createDeliver(user,description) {
+export async function createDeliver(user,deliver) {
     console.log(`User ${user.id} is creating a new deliver`)
     async function auth(){
         try{
@@ -10,7 +10,8 @@ export async function createDeliver(user,description) {
                 data:
                 {
                     rating:0,
-                    description: description,
+                    description: deliver.description,
+                    local:deliver.local,
                     avaliable: false,
                     user:user.id
                 },
@@ -21,7 +22,7 @@ export async function createDeliver(user,description) {
                     Authorization:`Bearer ${user.token}`,
                 },
             })
-            let deliver = res.data.data
+            deliver = res.data.data
             let message = "Created"
             console.log(`Entregador ${deliver.id} criado`)
             return {deliver,message}
@@ -74,13 +75,10 @@ export async function getUserDeliver(user) {
             {
                 id:res.data.data[0].id,
                 rating:res.data.data[0].attributes.rating,
-                pix_tel:res.data.data[0].attributes.pix_tel.data,
-                pix_rand:res.data.data[0].pix_rand,
-                pix_email:res.data.data[0].attributes.pix_email.data,
                 user:res.data.data[0].attributes.user,
-                credit:{},
+                local:res.data.data[0].attributes.local,
                 available:res.data.data[0].attributes.available,
-                debit:res.data.data[0].attributes.pix_debit,
+
                 description:res.data.data[0].attributes.description
             }
             return {deliver,message}
@@ -98,24 +96,22 @@ export async function getUserDeliver(user) {
     return res
 }
 
-export async function updateDeliver(deliver,rating,description,token) {
-    console.log(description)
-
+export async function updateDeliver(user,deliver) {
     async function auth(){
         try{
             /*Criando novo usuário*/
-            const res = await api.put(`/delivers/${deliver}`,
+            const res = await api.put(`/delivers/${deliver.id}`,
             {    
                 data:
                 {
-                    description:description,
-                    rating:rating
+                    description:deliver.description,
+                    local:deliver.local
                 },
             },
             {
                 headers:
                 {
-                    Authorization:`Bearer ${token}`,
+                    Authorization:`Bearer ${user.token}`,
                 },
             })
             deliver = res.data.data

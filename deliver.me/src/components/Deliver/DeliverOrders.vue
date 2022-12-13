@@ -34,8 +34,8 @@ export default{
 </script>
 
 <template>
-    <main class="col-12 col-lg-8">
-        <table class="table">
+        <h4>Pedidos</h4>
+        <table class="table w-100">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -51,5 +51,4 @@ export default{
                 </tr>
             </tbody>
         </table>
-    </main>
 </template>

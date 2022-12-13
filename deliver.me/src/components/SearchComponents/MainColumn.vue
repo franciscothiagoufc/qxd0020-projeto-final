@@ -1,6 +1,7 @@
 <script>
 import { searchDeliver } from '@/CRUD/search/search';
 import { createOrder } from '@/CRUD/order/order';
+import {MakeOrder} from '@/components/Order/MakeOrder.vue'
 export default{
     data(){
         return {
@@ -27,6 +28,9 @@ export default{
                 console.log(res)
             }
         }
+    },
+    components:{
+        MakeOrder,
     }
 }
 </script>
@@ -46,12 +50,19 @@ export default{
                                 <span>Avaliação:</span>
                                 <span>{{deliv.attributes.rating}}</span>
                             </div>
+                            <div>
+                                <span>Locais:</span>
+                                <span>{{deliv.attributes.local}}</span>
+                            </div>
                             <!--<div>
                                 <span>Status:</span>
                                 <span>Disponível</span>
                             </div>-->
                             <div>
-                                <button v-if="this.$store.state.user.token != ''" class="btn btn-primary" @click="this.order(deliv.id)">
+                                <div id="order-modal" class="modal-fade">
+                                    <MakeOrder></MakeOrder>
+                                </div>
+                                <button v-if="this.$store.state.user.token != ''" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#order-modal">
                                     Contratar
                                 </button>
                             </div>

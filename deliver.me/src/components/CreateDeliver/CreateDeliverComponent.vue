@@ -4,14 +4,18 @@ import router from '@/router';
     export default{
         data(){
             return{
-                description : ""
+                description : "",
+                local : "",
             }
         },
         methods:{
             createDeliver:async function(){
-                console.log(this.$store.state.user)
 
-                let res = await createDeliver(this.$store.state.user,this.description)
+                let deliver = {
+                    description:this.description,
+                    local:this.local
+                }
+                let res = await createDeliver(this.$store.state.user,deliver)
 
 
                 if(res.message == "Created")
@@ -42,6 +46,10 @@ import router from '@/router';
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" placeholder="Descrição" v-model="this.description" required>
                                 <label>Descrição</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="Descrição" v-model="this.local" required>
+                                <label>Locais de Atuação</label>
                             </div>
                         </form>
                     </div>

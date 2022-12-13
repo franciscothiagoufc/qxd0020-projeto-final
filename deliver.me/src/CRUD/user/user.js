@@ -33,16 +33,16 @@ export async function signup(user,password){
     return {user,message}
 }
 
-export async function updateUser(id,name,email,token){
+export async function updateUser(user){
     async function auth(){
         try{
-            await api.put(`/users/${id}`,
+            await api.put(`/users/${user.id}`,
             {
-                username:name,
-                email:email
+                username:user.name,
+                email:user.email
             },{
                 headers:{
-                    Authorization:`Bearer ${token}`
+                    Authorization:`Bearer ${user.token}`
                 }
             })
             let message = "Edited"

@@ -6,9 +6,9 @@ export async function searchDeliver(query) {
     async function search(){
         try{
 
-            const res = await api.get(`/delivers/?filters[user][username][$contains]=${query}&populate=*`,{
+            const res = await api.get(`/delivers/?filters[$or][0][user][username][$contains]=${query}&filters[$or][1][local][$contains]=${query}&populate=*`,{
                 params:{
-                    fields:["id","rating","description"]
+                    fields:["id","rating","description","local"]
                 }
             })
             const { data } = res

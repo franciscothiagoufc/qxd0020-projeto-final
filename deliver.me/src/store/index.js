@@ -16,6 +16,7 @@ export default createStore({
     deliver:{
       id:-1,
       description:"",
+      local:"",
       rating:0
     },
     btnCheckValue:true
@@ -42,6 +43,9 @@ export default createStore({
             state.deliver.id = res.deliver.id
             state.deliver.description = res.deliver.description
             state.deliver.rating = res.deliver.rating
+            state.deliver.local = res.deliver.local
+
+            console.log(res.deliver)
 
             router.push('/deliver/');
         }

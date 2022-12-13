@@ -18,24 +18,6 @@
     "avaliable": {
       "type": "boolean"
     },
-    "pix_tel": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::pix-tel.pix-tel",
-      "inversedBy": "deliver"
-    },
-    "pix_email": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::pix-email.pix-email",
-      "inversedBy": "deliver"
-    },
-    "card_debit": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::card-debit.card-debit",
-      "mappedBy": "deliver"
-    },
     "description": {
       "type": "richtext"
     },
@@ -45,17 +27,8 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "deliver"
     },
-    "pix_random": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::pix-random.pix-random",
-      "mappedBy": "deliver"
-    },
-    "coments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::coment.coment",
-      "mappedBy": "deliver"
+    "local": {
+      "type": "string"
     }
   }
 }
