@@ -21,6 +21,14 @@
                             <div class="input-group">
                                 <input type="date" class="date">
                             </div>
+                            <div class="tipo">
+                                Como deseja utilizar nossa plataforma ?
+                                <select class="form-select" id="tipo" v-model='tipo' ref="tipoSelect" required>
+                                    <option selected disabled></option>
+                                    <option value="cliente">Preciso de um entregador</option>
+                                    <option value="entregador">Quero trabalhar com vocês</option>
+                                </select>
+                            </div>
                             <div class="mt-4">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label mr" for="flexCheckDefault">
@@ -58,7 +66,8 @@ export default {
     data(){
         return {
             name:"",
-            email:""
+            email:"",
+            tipo:"cliente"
         }
     },
     components: {
@@ -80,7 +89,10 @@ export default {
                 this.$store.state.user.email = res.user.email
                 this.$store.state.user.token = res.user.token
                 this.$store.state.user.id = res.user.id
-                router.replace({ path: '/afiliate' })
+                if(this.tipo == "entregador" )
+                    router.replace({ path: '/afiliate' })
+                else if(this.tipo == "cliente" )
+                    router.replace({ path: '/' })
             }
         }
     }
@@ -102,6 +114,7 @@ export default {
 .date {
     border: 1px solid;
     border-radius: 5px;
+    opacity: 75%;
 }
 
 .date:focus {
@@ -117,5 +130,10 @@ export default {
 
 .btn {
     width: 100%
+}
+
+.tipo,#tipo{
+    width: 50%;
+    margin: 2% 0%;
 }
 </style>

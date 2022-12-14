@@ -36,7 +36,7 @@ export default createStore({
         res = await getUserRole(state.user)
         state.user.role = res.role
         res = await getUserDeliver(state.user)
-        console.log(res.message)
+        console.log(state.user.role)
 
         if(res.message == "found")
         {
@@ -44,9 +44,6 @@ export default createStore({
             state.deliver.description = res.deliver.description
             state.deliver.rating = res.deliver.rating
             state.deliver.local = res.deliver.local
-
-            console.log(res.deliver)
-
             router.push('/deliver/');
         }
         if(state.user.role == "Admin")
@@ -76,10 +73,10 @@ export default createStore({
       state.user.name = ""
       state.user.email = "" 
       state.user.token = ""
+      state.user.token = ""
       state.deliver.id = -1
       state.deliver.description = ""
       state.deliver.rating = 0
-
     },
     changeBtn(state,valorBtn){
       if(valorBtn=='No'){

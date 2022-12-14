@@ -8,11 +8,7 @@ export default{
         };
     },
     async mounted(){
-        let res = await getUserDeliver(this.$store.state.user)
-        if(res.message != "found")
-            router.push("/")
-        this.deliver = res.deliver
-        console.log(res)
+
     }
 }
 </script>

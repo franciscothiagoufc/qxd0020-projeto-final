@@ -4,8 +4,22 @@
         <div class="row">
             <LeftColumn/>
             <main class="col-12 col-lg-8">
-                <DeliverData/>
-                <DeliverOrders/>
+                <div class="tab-content">
+                    <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#orders">Pedidos</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#infos">Informações</a>
+                            </li>
+                        </ul>
+                    <div class="tab-pane container " id="infos">
+                        <DeliverData/>
+                    </div>
+                    <div class="tab-pane container active" id="orders">
+                        <DeliverOrders/>
+                    </div>
+                </div>
             </main>
             <RightColumn/>
         </div>

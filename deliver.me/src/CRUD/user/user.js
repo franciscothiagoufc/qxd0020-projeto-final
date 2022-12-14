@@ -89,7 +89,7 @@ export async function deleteUser(user){
 export async function getUserRole(user){
     async function auth(){
         try{
-            let res = await api.get(`/users/me?populate=role`,
+            let res = await api.get(`/users/${user.id}?populate=*`,
             {
                 headers:{
                     Authorization:`Bearer ${user.token}`

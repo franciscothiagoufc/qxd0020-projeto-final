@@ -158,4 +158,33 @@ export async function deleteDeliver(user,deliver){
     return res
 }
 
+export async function updateRole(user)
+{
+    async function auth(){
+        try{
+            await api.put(`/users/${user.id}`,
+            {
+                role:{
+                    id:"4",
+                    name:"Deliver",
+                    type:"deliver"
+                }
+            },{
+                headers:{
+                    Authorization:`Bearer ${user.token}`,
+                } 
+            })
+            let message = "deliver"
+            return {message}
+        }catch(e){
+            let message = e.message
+            return {message}
+        }
+    }
+    let message = ""
+    await auth().then((value) => {
+        message=value.message
+    })
+    return {message}
+}
 

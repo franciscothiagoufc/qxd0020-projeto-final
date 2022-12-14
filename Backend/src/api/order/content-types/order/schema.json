@@ -30,6 +30,12 @@
     },
     "commentary": {
       "type": "string"
+    },
+    "destiny": {
+      "type": "json"
+    },
+    "origin": {
+      "type": "json"
     }
   }
 }

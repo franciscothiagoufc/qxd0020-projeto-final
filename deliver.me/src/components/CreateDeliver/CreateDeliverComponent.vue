@@ -1,5 +1,5 @@
 <script>
-import { createDeliver } from '@/CRUD/deliver/deliver';
+import { createDeliver, updateDeliver, updateRole } from '@/CRUD/deliver/deliver';
 import router from '@/router';
     export default{
         data(){
@@ -16,10 +16,9 @@ import router from '@/router';
                     local:this.local
                 }
                 let res = await createDeliver(this.$store.state.user,deliver)
-
-
                 if(res.message == "Created")
                 {
+                    await updateRole(this.$store.state.user)
                     this.$store.state.deliver.id = res.deliver.id,
                     this.$store.state.deliver.description = res.deliver.description,
                     this.$store.state.deliver.rating = res.deliver.rating

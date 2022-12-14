@@ -7,9 +7,7 @@ export default{
         };
     },
     async mounted(){
-        if(this.$store.state.user.role != "Admin"){
-            router.push("/")
-        }
+
     },
     components: { AdminComponent }
 }
