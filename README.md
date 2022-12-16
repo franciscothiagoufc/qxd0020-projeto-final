@@ -56,7 +56,7 @@ Strapi.
 | --- | --- | --- | --- | --- |
 | User | X |  X  | X | X |
 | Deliver | X |  X  |  X |  |
-| Order | X |    | X | X |
+| Order | X |  X | X | X |
 
 > Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
 
