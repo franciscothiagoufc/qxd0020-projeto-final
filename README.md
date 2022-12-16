@@ -5,6 +5,7 @@ Um sistema onde entregadores autonomos podem divulgar e prestar seus serviços.
 ## :technologist: Membros da equipe
 
 415199, Francisco Thiago dos Santos Gonçalves. Engenharia de Computação.
+
 473825, Carlos Eduardo Costa Nunes. Engenharia de Software.
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
