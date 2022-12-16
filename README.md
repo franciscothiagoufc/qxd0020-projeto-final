@@ -25,8 +25,8 @@ Um sistema onde entregadores autonomos podem divulgar e prestar seus serviços.
 - O usuário não logado pode se cadastrar no sistema, adicionando uma nova entrada na tabela User, onde, por padrão, ele recebe o papel(role) de usuário autenticado (Autenticated).
 - Ainda na tela de cadastro, o usuário pode encolher se afiliar ao site, logo se tornando um entregador. Nesse caso, seu papel(role) é atualizado para Deliver e uma nova entrada é adicionada a tabela Deliver, onde sua descrição e local de atuação são cadastrados.
 - O usuário logado pode pesquisar entregadores além de contratar seus serviços por meio do botão contratar, disponível apenas para usuários autenticados. Ao realizar o contrato, um novo elemento na entidade Order é criado. A interação com Order varia de acordo com o tipo do usuário.
-- O usuário autenticado que fez o pedido pode cancelar ou finalizar o pedido atribuindo uma nota ao serviço. Essa interação é feita na rota /myorders 
-- O usuário Deliver que recebeu o pedido pode visualizar o pedido e, caso tenha sido finalizado, visualizar a nota recebida. Essa interação é feita na rota /deliver
+  -O usuário autenticado que fez o pedido pode cancelar ou finalizar o pedido atribuindo uma nota ao serviço. Essa interação é feita na rota /myorders 
+  -O usuário Deliver que recebeu o pedido pode visualizar o pedido e, caso tenha sido finalizado, visualizar a nota recebida. Essa interação é feita na rota /deliver
 - O usuário que possue um elemento na tabela entregadores pode editar suas informações.
 - O administrator pode excluir e alterar o nome e o email de qualquer usuário.
 
