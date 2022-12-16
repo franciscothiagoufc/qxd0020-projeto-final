@@ -99,6 +99,7 @@ export async function getUserDeliver(user) {
 export async function updateDeliver(user,deliver) {
     async function auth(){
         try{
+            console.log(deliver)
             /*Criando novo usuário*/
             const res = await api.put(`/delivers/${deliver.id}`,
             {    
@@ -114,15 +115,13 @@ export async function updateDeliver(user,deliver) {
                     Authorization:`Bearer ${user.token}`,
                 },
             })
-            deliver = res.data.data
-            let message = "Created"
+            let message = "Edited"
             console.log(`Entregador ${deliver.id} editado`)
-            return {deliver,message}
+            return {message}
         }catch(e){
-            let deliver = {}
             let message = e.message
             console.log('editing failed '+e.message)
-            return {deliver, message}
+            return {message}
         }
     }
     let res

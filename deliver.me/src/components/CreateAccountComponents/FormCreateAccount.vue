@@ -88,6 +88,7 @@ export default {
                 this.$store.state.user.name = res.user.username
                 this.$store.state.user.email = res.user.email
                 this.$store.state.user.token = res.user.token
+                this.$store.state.user.role = "Authenticated"
                 this.$store.state.user.id = res.user.id
                 if(this.tipo == "entregador" )
                     router.replace({ path: '/afiliate' })

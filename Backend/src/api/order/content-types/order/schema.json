@@ -19,8 +19,9 @@
     },
     "deliver": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::deliver.deliver"
+      "relation": "manyToOne",
+      "target": "api::deliver.deliver",
+      "inversedBy": "orders"
     },
     "finished": {
       "type": "boolean"

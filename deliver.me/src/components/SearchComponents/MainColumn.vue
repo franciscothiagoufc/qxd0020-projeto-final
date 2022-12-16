@@ -6,6 +6,7 @@ export default{
     data(){
         return {
             delivers:{},
+            ratings:[]
         }
     },
     async mounted(){
@@ -13,7 +14,21 @@ export default{
         let res = await searchDeliver(query)
         let delivers=res.delivers  
         this.delivers=delivers
-        console.log(this.delivers)
+        this.delivers.forEach(deliver => {
+            let sum = 0 
+            this.ratings[deliver.id] = 5 
+            console.log(deliver.attributes.orders.data)
+            deliver.attributes.orders.data.forEach(element =>{
+                sum += element.attributes.rating
+            })
+            this.ratings[deliver.id] = deliver.attributes.orders.data.length > 0 ? sum/(deliver.attributes.orders.data.length) : 5;
+        });
+
+    },
+    methods:{
+        selectDeliver:function(id){
+            this.$store.state.selectDeliver = id
+        }
     },
     components:{
         ModalContractVue
@@ -52,18 +67,18 @@ img{
                         </div>
                         <div class=" bottom d-flex flex-row justify-content-around mt-2">
                             <div>
-                                <span>Avaliação:</span>
-                                <span>{{deliver.attributes.rating}}</span>
+                                <span>Avaliação: </span>
+                                <span>{{this.ratings[deliver.id]}}</span>
                             </div>
                             <div>
                                 <!--<span>Status:</span>
                                 <span>{{deliver.attributes.status}}</span>-->
                             </div>
                             <div v-if="this.$store.state.user.role != '' " >
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contract-modal">
+                                <button class="btn btn-primary" data-bs-toggle="modal" @click="this.selectDeliver(deliver.id)" data-bs-target="#contract-modal">
                                     Contratar
                                 </button>
-                                <ModalContractVue/>
+                                <ModalContractVue :deliverid="deliver.id"/>
                             </div>
                         </div>
                     </div>

@@ -20,10 +20,11 @@ import router from '@/router';
                 {
                     await updateRole(this.$store.state.user)
                     this.$store.state.deliver.id = res.deliver.id,
+                    this.$store.state.user.role ="Deliver",
                     this.$store.state.deliver.description = res.deliver.description,
                     this.$store.state.deliver.rating = res.deliver.rating
 
-                    router.push("/")
+                    router.push("/deliver")
                 }
             }, 
             jump: function(){

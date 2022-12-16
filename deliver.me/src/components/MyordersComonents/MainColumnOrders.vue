@@ -1,7 +1,7 @@
 <template>
     <main class="col-12 col-lg-8">
         <h1>Meus Pedidos</h1>
-        <div class="card mt-4" v-for="order in this.orders" v-bind:key="order.id">
+        <div class="card mt-4" v-for="order in this.orders" v-bind:key="order.createdAt">
             <div class="card-body text-left">
                 <div class="d-flex flex-row justify-content-around">
                     <div class="w-100">
@@ -9,8 +9,8 @@
                         <div style="overflow-y: none;min-height:120px;max-height:120px;" class="text">
                             <div>
                                 <p><span>Entregador</span>: {{order.attributes.deliver.data.id}}</p>
-                                <p><span>Endereço da busca do pacote</span>: {{order.attributes.origin.address}}, {{order.attributes.origin.address}}, {{order.attributes.origin.district}} </p>
-                                <p><span>Endereço da entrega:</span> {{order.attributes.destiny.address}}, {{order.attributes.destiny.address}}, {{order.attributes.destiny.district}}</p>
+                                <p><span>Endereço da busca do pacote</span>: {{order.attributes.origin.address}}, {{order.attributes.origin.district}}, {{order.attributes.origin.number}} </p>
+                                <p><span>Endereço da entrega:</span> {{order.attributes.destiny.address}}, {{order.attributes.destiny.district}}, {{order.attributes.destiny.number}}</p>
                             </div>
                         </div>
                         <div class="bottom d-flex flex-row justify-content-around mt-2">
@@ -34,7 +34,8 @@
                             <div class="orderStatus">
                                 <label for="status">Status:</label>
                                 <select class="form-select" id="status" :disabled="order.attributes.finished" ref="statusSelect" required>
-                                    <option value="Finalizado" v-if="order.attributes.finished">Finalizado</option>
+                                    <option value="Finalizado" v-if="order.attributes.finished==true">Finalizado</option>
+                                    <option value="Finalizado" v-else-if="order.attributes.finished === 'deleted'">Removido</option>
                                     <option value="Curso" v-else>Em curso</option>
                                 </select>
                             </div>
@@ -66,6 +67,7 @@ export default {
     data() {
         return {
             orders:{},
+            ordersid:[],
             nomeEntregador: 'Joao',
             status:'Curso',
             disable: false,
@@ -91,11 +93,7 @@ export default {
         removeOrder: async function(id){
             let res = await deleteOrder(this.$store.state.user,id)
             if(res.message == "deleted"){
-                let res = await getUserOrders(this.$store.state.user)
-                if(res.message == "found")
-                    this.orders = res.orders.data
-                else
-                    window.alert("Falha ao recarregar a página")
+                this.orders[this.ordersid[id]].attributes.finished = 'deleted'
             }
             else
                 window.alert("Falha ao cancelar o pedido")
@@ -104,11 +102,7 @@ export default {
             console.log(id)
             let res = await finishOrder(this.$store.state.user,id,rating)
             if(res.message == "finished"){
-                let res = await getUserOrders(this.$store.state.user)
-                if(res.message == "found")
-                    this.orders = res.orders.data
-                else
-                    window.alert("Falha ao recarregar a página")
+                this.orders[this.ordersid[id]].attributes.finished = true
             }
             else
                 window.alert("Falha ao cancelar o pedido")
@@ -123,6 +117,8 @@ export default {
     async mounted(){
         let res = await getUserOrders(this.$store.state.user)
         this.orders = res.orders.data
+        for(let i = 0; i < this.orders.length;i++)
+            this.ordersid[this.orders[i].id] = i
     }
 }
 </script>

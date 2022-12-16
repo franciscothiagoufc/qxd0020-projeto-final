@@ -6,6 +6,7 @@ import router from '@/router';
 
 export default createStore({
   state: {
+    selected_deliver:-1,
     user:{
       name:'',
       email:'',
@@ -46,10 +47,10 @@ export default createStore({
             state.deliver.local = res.deliver.local
             router.push('/deliver/');
         }
-        if(state.user.role == "Admin")
+        else if(state.user.role == "Admin")
           router.push('/admin/');
         else
-          router.push('/');
+          router.push('/myorders');
       }
     },
     async signup(state,name,email)
@@ -59,13 +60,15 @@ export default createStore({
         email : email
       }
       let res = await signup(user,this.$store.user.pass)
-      console.log(res).message
       if(res.message == "Created")
       {
         state.user.id = res.user.id,
+        state.user.role = "Authenticated",
         state.user.name = res.user.username,
         state.user.email = res.user.email, 
         state.user.token = res.user.token
+        console.log(state.user.role)
+        await router.push('/myorders')
       }
     },
     logout(state){

@@ -40,7 +40,7 @@
                                 <label for="Name">Bairro</label>
                             </div>
                             <div class="form-floating mb-3 formulario">
-                                <input type="text" class="form-control" v-model="this.bairroNumero" id="numero" placeholder="Name" required>
+                                <input type="text" class="form-control" v-model="this.numeroOrigem" id="numero" placeholder="Name" required>
                                 <label for="Name">Número</label>
                             </div>
                         </div>
@@ -97,7 +97,6 @@ export default {
     props:["deliverid"],
     created(){
         this.id = this.deliverid
-        console.log(this.deliverid)
     },
     methods:{
         freebtn:function(){
@@ -121,11 +120,12 @@ export default {
                 district:this.bairroOrigem,
                 number:this.numeroOrigem
             }
-            console.log(this.id)
-            let res =  await createOrder(this.$store.state.user,this.id,destiny,origin)
+            console.log(this.$store.state.selectDeliver)
+            let res =  await createOrder(this.$store.state.user,this.$store.state.selectDeliver,destiny,origin)
             if(res.message == "created")
             {   
                 window.alert('Pedido realizado')
+                router.push("/myorders")
             }
             else
                 window.alert('Falha na contratação')

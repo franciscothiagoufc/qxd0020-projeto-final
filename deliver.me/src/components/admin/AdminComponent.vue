@@ -53,7 +53,6 @@ export default{
                                 <th>Id</th>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Avaliação</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
@@ -62,8 +61,6 @@ export default{
                                 <td>{{user.id}}</td>
                                 <td><input type="text" v-model="user.username"></td>
                                 <td><input type="text" v-model="user.email"></td>
-                                <td v-if="user.deliver"><input v-model="user.deliver.rating" type="number"/></td>
-                                <td v-else>*</td>
                                 <td>
                                     <button class="btn btn-danger" @click="this.deleteUser(user.id)">
                                         Deletar
